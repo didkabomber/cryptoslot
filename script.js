@@ -10,26 +10,43 @@ function spinReels() {
     const result = document.getElementById('result');
     const pointsDisplay = document.getElementById('points');
 
-    // Randomly select a symbol for each reel
-    const reel1Symbol = symbols[Math.floor(Math.random() * symbols.length)];
-    const reel2Symbol = symbols[Math.floor(Math.random() * symbols.length)];
-    const reel3Symbol = symbols[Math.floor(Math.random() * symbols.length)];
+    // Remove existing animations
+    reel1.classList.remove('spin');
+    reel2.classList.remove('spin');
+    reel3.classList.remove('spin');
 
-    // Update the UI with the new symbols
-    reel1.textContent = reel1Symbol;
-    reel2.textContent = reel2Symbol;
-    reel3.textContent = reel3Symbol;
+    // Force reflow to restart the animation
+    void reel1.offsetWidth;
+    void reel2.offsetWidth;
+    void reel3.offsetWidth;
 
-    // Determine if the player has won and update points
-    if (reel1Symbol === reel2Symbol && reel2Symbol === reel3Symbol) {
-        result.textContent = 'You Win!';
-        result.style.color = 'green';
-        points += 10; // Add points for a win
-    } else {
-        result.textContent = 'Try Again!';
-        result.style.color = 'red';
-    }
+    // Add spin animation
+    reel1.classList.add('spin');
+    reel2.classList.add('spin');
+    reel3.classList.add('spin');
 
-    // Update points display
-    pointsDisplay.textContent = points;
+    // Randomly select a symbol for each reel after animation duration
+    setTimeout(() => {
+        const reel1Symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        const reel2Symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        const reel3Symbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+        // Update the UI with the new symbols
+        reel1.textContent = reel1Symbol;
+        reel2.textContent = reel2Symbol;
+        reel3.textContent = reel3Symbol;
+
+        // Determine if the player has won and update points
+        if (reel1Symbol === reel2Symbol && reel2Symbol === reel3Symbol) {
+            result.textContent = 'You Win!';
+            result.style.color = 'green';
+            points += 10; // Add points for a win
+        } else {
+            result.textContent = 'Try Again!';
+            result.style.color = 'red';
+        }
+
+        // Update points display
+        pointsDisplay.textContent = points;
+    }, 1000); // Match the timeout with animation duration
 }

@@ -34,6 +34,15 @@ body {
     border-radius: 5px;
 }
 
+.spin {
+    animation: spin 1s ease-in-out;
+}
+
+@keyframes spin {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(360deg); }
+}
+
 button {
     padding: 10px 20px;
     font-size: 1em;
