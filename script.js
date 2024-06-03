@@ -19,8 +19,7 @@ function initializeTelegram() {
     if (user) {
 //        telegramId = Number(user.id);
         telegramId = user.id;
-//        document.getElementById('telegramId').textContent = telegramId;
-        document.getElementById('telegramId').textContent = Number(user.id);
+        document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
         document.getElementById('telegramId').textContent = 'Not available';
