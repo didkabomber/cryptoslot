@@ -13,7 +13,7 @@ let telegramId = 987654323;
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
     tg.ready();
-//    tg.expand();
+    tg.expand();
 
     const user = tg.initDataUnsafe.user;
     if (user) {
@@ -119,7 +119,7 @@ function sendPointsToServer(points) {
 
 // console.log(`telegramId:${telegramId}`);
 // console.log(`telegramId:`);
-        document.getElementById('telegramId').textContent = telegramId;
+//        document.getElementById('telegramId').textContent = telegramId;
 
 
 //    fetch('http://192.168.0.102:49450/update_points', {
@@ -135,8 +135,10 @@ function sendPointsToServer(points) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
+        document.getElementById('telegramId').textContent = data;
     })
     .catch((error) => {
         console.error('Error:', error);
+        document.getElementById('telegramId').textContent = error;
     });
 }
