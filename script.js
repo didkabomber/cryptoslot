@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 //let telegramId = null;
-let telegramId = 987654322;
+let telegramId = 987654323;
 
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
