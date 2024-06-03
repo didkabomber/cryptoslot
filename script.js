@@ -1,6 +1,23 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetchPointsFromServer();
+    initializeTelegram();
+});
+
 document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
+
+function fetchPointsFromServer() {
+    fetch('http://localhost:3000/get_points')
+        .then(response => response.json())
+        .then(data => {
+            points = data.points;
+            document.getElementById('points').textContent = points;
+        })
+        .catch((error) => {
+            console.error('Error fetching points:', error);
+        });
+}
 
 function spinReels() {
     const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '⭐'];
@@ -41,6 +58,9 @@ function spinReels() {
             result.textContent = 'You Win!';
             result.style.color = 'green';
             points += 10; // Add points for a win
+
+            // Send updated points to the server
+            sendPointsToServer(points);
         } else {
             result.textContent = 'Try Again!';
             result.style.color = 'red';
@@ -49,4 +69,33 @@ function spinReels() {
         // Update points display
         pointsDisplay.textContent = points;
     }, 1000); // Match the timeout with animation duration
+}
+
+function sendPointsToServer(points) {
+    fetch('http://localhost:3000/update_points', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ points: points })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
+function initializeTelegram() {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+
+    const user = tg.initDataUnsafe.user;
+    if (user) {
+        document.getElementById('telegramId').textContent = user.id;
+    } else {
+        document.getElementById('telegramId').textContent = 'Not available';
+    }
 }

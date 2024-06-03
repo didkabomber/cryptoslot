@@ -1,0 +1,9 @@
+{
+    "manifest": {
+        "url": "https://my-app.com",
+        "name": "Slot Game",
+        "icons": [
+            "https://my-app.com/icon.png"
+        ]
+    }
+}
