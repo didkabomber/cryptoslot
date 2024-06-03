@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     initializeTelegram();
+//        fetchPointsFromServer();
+
 });
 
 document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
-let telegramId = null;
+//let telegramId = null;
+let telegramId = 0;
 
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
