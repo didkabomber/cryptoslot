@@ -19,7 +19,8 @@ function initializeTelegram() {
     if (user) {
 //        telegramId = Number(user.id);
         telegramId = user.id;
-        document.getElementById('telegramId').textContent = telegramId;
+//        document.getElementById('telegramId').textContent = telegramId;
+        document.getElementById('telegramId').textContent = Number(user.id);
         fetchPointsFromServer();
     } else {
         document.getElementById('telegramId').textContent = 'Not available';
@@ -135,10 +136,8 @@ function sendPointsToServer(points) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        document.getElementById('telegramId').textContent = data;
     })
     .catch((error) => {
         console.error('Error:', error);
-        document.getElementById('telegramId').textContent = error;
     });
 }
