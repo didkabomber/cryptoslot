@@ -13,6 +13,7 @@ let telegramId = 0;
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
     tg.ready();
+    tg.expand();
 
     const user = tg.initDataUnsafe.user;
     if (user) {
