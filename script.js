@@ -1,14 +1,54 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    fetchPointsFromServer();
-    initializeTelegram();
+//    initializeTelegram();
+        fetchPointsFromServer();
+
 });
 
 document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
+let telegramId = 3337;
+
+function initializeTelegram() {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+
+    const user = tg.initDataUnsafe.user;
+    if (user) {
+        telegramId = user.id;
+        document.getElementById('telegramId').textContent = telegramId;
+        fetchPointsFromServer();
+    } else {
+        document.getElementById('telegramId').textContent = 'Not available';
+    }
+}
 
 function fetchPointsFromServer() {
-    fetch('http://localhost:3000/get_points')
+    if (!telegramId) return;
+
+//    fetch('http://192.168.0.102:49450/get_points', {
+
+    fetch('http://e73398b2546c.vps.myjino.ru:49450/get_points', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ telegram_id: telegramId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        points = data.points;
+        document.getElementById('points').textContent = points;
+    })
+    .catch((error) => {
+        console.error('Error fetching points:', error);
+    });
+}
+
+
+/*
+function fetchPointsFromServer() {
+    fetch('http://192.168.0.102:3000/get_points')
         .then(response => response.json())
         .then(data => {
             points = data.points;
@@ -18,6 +58,7 @@ function fetchPointsFromServer() {
             console.error('Error fetching points:', error);
         });
 }
+*/
 
 function spinReels() {
     const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '⭐'];
@@ -72,12 +113,15 @@ function spinReels() {
 }
 
 function sendPointsToServer(points) {
-    fetch('http://localhost:3000/update_points', {
+//    fetch('http://192.168.0.102:49450/update_points', {
+    fetch('http://e73398b2546c.vps.myjino.ru:49450/update_points', {
+
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ points: points })
+//        body: JSON.stringify({ points: points })
+        body: JSON.stringify({ telegram_id: telegramId, points: points })
     })
     .then(response => response.json())
     .then(data => {
@@ -86,16 +130,4 @@ function sendPointsToServer(points) {
     .catch((error) => {
         console.error('Error:', error);
     });
-}
-
-function initializeTelegram() {
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-
-    const user = tg.initDataUnsafe.user;
-    if (user) {
-        document.getElementById('telegramId').textContent = user.id;
-    } else {
-        document.getElementById('telegramId').textContent = 'Not available';
-    }
 }

@@ -7,19 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="points">Didcoins: <span id="points">0</span></div>
     <div class="slot-machine">
-        <div class="header">
-            <div class="points-display">Didcoins: <span id="points">0</span></div>
-        </div>
         <div class="reels">
-            <div id="reel1" class="reel">🍒</div>
-            <div id="reel2" class="reel">🍋</div>
-            <div id="reel3" class="reel">🍊</div>
+            <div class="reel" id="reel1">🍒</div>
+            <div class="reel" id="reel2">🍋</div>
+            <div class="reel" id="reel3">🍊</div>
         </div>
-        <div class="controls">
-            <button id="spinButton">Spin</button>
-        </div>
-        <div id="result" class="result"></div>
+        <button id="spinButton">Spin</button>
+        <div class="result" id="result"></div>
         <div class="telegram-id">Telegram ID: <span id="telegramId">Loading...</span></div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
