@@ -21,7 +21,7 @@ function initializeTelegram() {
     if (user) {
 //        telegramId = Number(user.id);
 //        telegramId = '' + user.id;
-        telegramId = user.id.toString();
+        telegramId = alert(user.id);
 //        telegramId = String(test);
 //        telegramId = user.id;
 //        document.getElementById('telegramId').textContent = telegramId;
@@ -29,7 +29,7 @@ function initializeTelegram() {
         fetchPointsFromServer();
     } else {
 //        telegramId = String(test);
-        telegramId = test.toString();
+        telegramId = alert(test);
 //        telegramId = '' + test;
         document.getElementById('telegramId').textContent = telegramId;
 //        document.getElementById('telegramId').textContent = 'Not available';
