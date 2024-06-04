@@ -19,7 +19,8 @@ function initializeTelegram() {
     const user = tg.initDataUnsafe.user;
     if (user) {
 //        telegramId = Number(user.id);
-        telegramId = user.id;
+        telegramId = String(user.id);
+//        telegramId = user.id;
         document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
