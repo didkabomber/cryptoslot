@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 922;
+let test = 901;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -17,7 +17,7 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 932;
+        document.getElementById('version').textContent = 901;
 
 
     const user = tg.initDataUnsafe.user;
@@ -53,8 +53,10 @@ function fetchPointsFromServer() {
     if (!telegramId) return;
 
 //    fetch('http://192.168.0.102:49450/get_points', {
+//    fetch('http://e73398b2546c.vps.myjino.ru:49450/get_points', {
 
-    fetch('http://e73398b2546c.vps.myjino.ru:49450/get_points', {
+    fetch('http://81.177.165.117:49450/get_points', {
+
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -153,7 +155,8 @@ function sendPointsToServer(points) {
 
 
 //    fetch('http://192.168.0.102:49450/update_points', {
-    fetch('http://e73398b2546c.vps.myjino.ru:49450/update_points', {
+//    fetch('http://e73398b2546c.vps.myjino.ru:49450/update_points', {
+    fetch('http://81.177.165.117:49450/update_points', {
 
         method: 'POST',
         headers: {
