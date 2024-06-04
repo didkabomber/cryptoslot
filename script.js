@@ -23,7 +23,7 @@ function initializeTelegram() {
         telegramId = String(user.id);
 //        telegramId = String(test);
 //        telegramId = user.id;
-        document.getElementById('telegramId').textContent = telegramId;
+        document.getElementById('telegramId').textContent = typeof telegramId;
         fetchPointsFromServer();
     } else {
         telegramId = String(test);
