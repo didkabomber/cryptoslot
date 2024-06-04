@@ -17,7 +17,7 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 922;
+        document.getElementById('version').textContent = 932;
 
 
     const user = tg.initDataUnsafe.user;
