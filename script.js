@@ -17,6 +17,9 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
+        document.getElementById('version').textContent = 999;
+
+
     const user = tg.initDataUnsafe.user;
     if (user) {
 //        telegramId = Number(user.id);
@@ -137,6 +140,10 @@ function sendPointsToServer(points) {
 // console.log(`telegramId:${telegramId}`);
 // console.log(`telegramId:`);
 //        document.getElementById('telegramId').textContent = telegramId;
+
+        alert(typeof telegramId);
+        alert(telegramId);
+
 
 
 //    fetch('http://192.168.0.102:49450/update_points', {
