@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 903;
+let test = 904;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -17,7 +17,7 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 903;
+        document.getElementById('version').textContent = 904;
 
 
     const user = tg.initDataUnsafe.user;
