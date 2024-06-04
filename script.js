@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 987;
+let test = 922;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -17,16 +17,22 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 999;
+        document.getElementById('version').textContent = 922;
 
 
     const user = tg.initDataUnsafe.user;
     if (user) {
 //        telegramId = Number(user.id);
 //        telegramId = '' + user.id;
+/*
         telegramId = alert(typeof user.id.toString());
         telegramId = user.id.toString();
         alert(typeof telegramId);
+*/
+        telegramId = alert(typeof test.toString());
+        telegramId = test.toString();
+        alert(typeof telegramId);
+
 //        telegramId = String(test);
 //        telegramId = user.id;
 //        document.getElementById('telegramId').textContent = telegramId;
