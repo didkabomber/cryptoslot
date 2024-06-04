@@ -23,11 +23,11 @@ function initializeTelegram() {
         telegramId = String(user.id);
 //        telegramId = String(test);
 //        telegramId = user.id;
-        document.getElementById('telegramId').textContent = typeof telegramId;
+        document.getElementById('telegramId').textContent = telegramId + 1;
         fetchPointsFromServer();
     } else {
         telegramId = String(test);
-        document.getElementById('telegramId').textContent = telegramId;
+        document.getElementById('telegramId').textContent = telegramId + 1;
 //        document.getElementById('telegramId').textContent = 'Not available';
     }
 }
