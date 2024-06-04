@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 987654;
+let test = 987;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -20,13 +20,17 @@ function initializeTelegram() {
     const user = tg.initDataUnsafe.user;
     if (user) {
 //        telegramId = Number(user.id);
-        telegramId = '' + user.id;
+//        telegramId = '' + user.id;
+        telegramId = user.id.toString();
 //        telegramId = String(test);
 //        telegramId = user.id;
+//        document.getElementById('telegramId').textContent = telegramId;
         document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
-        telegramId = String(test);
+//        telegramId = String(test);
+        telegramId = test.toString();
+//        telegramId = '' + test;
         document.getElementById('telegramId').textContent = telegramId;
 //        document.getElementById('telegramId').textContent = 'Not available';
     }
