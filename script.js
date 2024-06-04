@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
-//let telegramId = null;
-let telegramId = 987654323;
+let telegramId = null;
+//let telegramId = 987654323;
+//let telegramId = 'Test'
 
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
@@ -22,6 +23,7 @@ function initializeTelegram() {
         document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
+//        document.getElementById('telegramId').textContent = telegramId;
         document.getElementById('telegramId').textContent = 'Not available';
     }
 }
@@ -116,6 +118,9 @@ function spinReels() {
 }
 
 function sendPointsToServer(points) {
+
+//    if (!telegramId) return;
+
 
 // console.log(`telegramId:${telegramId}`);
 // console.log(`telegramId:`);
