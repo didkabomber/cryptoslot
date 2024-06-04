@@ -8,8 +8,9 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
+let test = 987654;
 //let telegramId = 987654323;
-//let telegramId = 'Test'
+//let telegramId = 'Test2'
 
 function initializeTelegram() {
     const tg = window.Telegram.WebApp;
@@ -20,12 +21,14 @@ function initializeTelegram() {
     if (user) {
 //        telegramId = Number(user.id);
         telegramId = String(user.id);
+//        telegramId = String(test);
 //        telegramId = user.id;
         document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
-//        document.getElementById('telegramId').textContent = telegramId;
-        document.getElementById('telegramId').textContent = 'Not available';
+        telegramId = String(test);
+        document.getElementById('telegramId').textContent = telegramId;
+//        document.getElementById('telegramId').textContent = 'Not available';
     }
 }
 
