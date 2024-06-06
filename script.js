@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 908;
+let test = 909;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -17,7 +17,7 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 908;
+        document.getElementById('version').textContent = 909;
 
 
     const user = tg.initDataUnsafe.user;
@@ -124,7 +124,8 @@ function spinReels() {
         reel3.textContent = reel3Symbol;
 
         // Determine if the player has won and update points
-        if (reel1Symbol === reel2Symbol && reel2Symbol === reel3Symbol) {
+//        if (reel1Symbol === reel2Symbol && reel2Symbol === reel3Symbol) {
+        if (reel1Symbol === reel1Symbol) {
             result.textContent = 'You Win!';
             result.style.color = 'green';
             points += 10; // Add points for a win
