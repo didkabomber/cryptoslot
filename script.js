@@ -8,7 +8,7 @@ document.getElementById('spinButton').addEventListener('click', spinReels);
 
 let points = 0;
 let telegramId = null;
-let test = 906;
+let test = 904;
 //let telegramId = 987654323;
 //let telegramId = 'Test2'
 
@@ -17,7 +17,7 @@ function initializeTelegram() {
     tg.ready();
     tg.expand();
 
-        document.getElementById('version').textContent = 906;
+        document.getElementById('version').textContent = 904;
 
 
     const user = tg.initDataUnsafe.user;
@@ -77,7 +77,7 @@ function fetchPointsFromServer() {
 
 /*
 function fetchPointsFromServer() {
-    fetch('https://192.168.0.102:3000/get_points')
+    fetch('http://192.168.0.102:3000/get_points')
         .then(response => response.json())
         .then(data => {
             points = data.points;
