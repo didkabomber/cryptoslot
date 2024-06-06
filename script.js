@@ -22,72 +22,17 @@ function initializeTelegram() {
 
     const user = tg.initDataUnsafe.user;
     if (user) {
-//        telegramId = Number(user.id);
-//        telegramId = '' + user.id;
-/*
-        telegramId = alert(typeof user.id.toString());
-        telegramId = user.id.toString();
-        alert(typeof telegramId);
-*/
-	alert(typeof user.id);
-        telegramId = alert(typeof test.toString());
-        telegramId = test.toString();
-        alert(typeof telegramId);
-
-//        telegramId = String(test);
-//        telegramId = user.id;
-//        document.getElementById('telegramId').textContent = telegramId;
+        telegramId = user.id;
         document.getElementById('telegramId').textContent = telegramId;
         fetchPointsFromServer();
     } else {
-//        telegramId = String(test);
-        telegramId = alert(typeof test.toString());
         telegramId = test.toString();
-        alert(typeof telegramId);
-//        telegramId = '' + test;
         document.getElementById('telegramId').textContent = telegramId;
+        fetchPointsFromServer();
+
 //        document.getElementById('telegramId').textContent = 'Not available';
     }
 }
-
-function fetchPointsFromServer() {
-    if (!telegramId) return;
-
-//    fetch('http://192.168.0.102:49450/get_points', {
-//    fetch('http://e73398b2546c.vps.myjino.ru:49450/get_points', {
-
-    fetch('http://81.177.165.117:49450/get_points', {
-
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ telegram_id: telegramId })
-    })
-    .then(response => response.json())
-    .then(data => {
-        points = data.points;
-        document.getElementById('points').textContent = points;
-    })
-    .catch((error) => {
-        console.error('Error fetching points:', error);
-    });
-}
-
-
-/*
-function fetchPointsFromServer() {
-    fetch('http://192.168.0.102:3000/get_points')
-        .then(response => response.json())
-        .then(data => {
-            points = data.points;
-            document.getElementById('points').textContent = points;
-        })
-        .catch((error) => {
-            console.error('Error fetching points:', error);
-        });
-}
-*/
 
 function spinReels() {
     const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '🍓', '⭐'];
@@ -142,23 +87,45 @@ function spinReels() {
     }, 1000); // Match the timeout with animation duration
 }
 
+
+
+
+function fetchPointsFromServer() {
+    if (!telegramId) return;
+
+//    fetch('http://192.168.0.102:49450/get_points', {
+//    fetch('http://e73398b2546c.vps.myjino.ru:49450/get_points', {
+
+    fetch('https://didko.site:49450/get_points', {
+
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ telegram_id: telegramId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        points = data.points;
+        document.getElementById('points').textContent = points;
+    })
+    .catch((error) => {
+        console.error('Error fetching points:', error);
+    });
+}
+
+
+
 function sendPointsToServer(points) {
 
-//    if (!telegramId) return;
-
-
-// console.log(`telegramId:${telegramId}`);
-// console.log(`telegramId:`);
-//        document.getElementById('telegramId').textContent = telegramId;
-
-        alert(typeof telegramId);
-        alert(telegramId);
-
-
+    if (!telegramId) return;
 
 //    fetch('http://192.168.0.102:49450/update_points', {
 //    fetch('http://e73398b2546c.vps.myjino.ru:49450/update_points', {
-    fetch('http://81.177.165.117:49450/update_points', {
+//    fetch('https://81.177.165.117:443/update_points', {
+//    fetch('https://81.177.165.117/update_points', {
+
+    fetch('https://didko.site:49450/update_points', {
 
         method: 'POST',
         headers: {
@@ -166,8 +133,6 @@ function sendPointsToServer(points) {
         },
 //        body: JSON.stringify({ points: points })
         body: JSON.stringify({ telegram_id: telegramId, points: points })
-        , referrerPolicy: "unsafe-url" 
-
     })
     .then(response => response.json())
     .then(data => {
@@ -178,4 +143,6 @@ function sendPointsToServer(points) {
         console.error('Error:', error);
 	alert(error);
     });
+
+
 }
